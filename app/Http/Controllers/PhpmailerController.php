@@ -22,7 +22,6 @@ class PhpmailerController extends Controller
         $mail->Port = 465;
         $mail->CharSet = 'UTF-8';
 
-
         $mail->setFrom('fortesttask@bk.ru', 'Test Message');
         $mail->addAddress($mail_address, 'Андрей Грибин');
 
@@ -30,6 +29,6 @@ class PhpmailerController extends Controller
         $mail->Subject = 'Подтверждение регистрации';
         $mail->Body    = 'Вы успешно зарегистрировались';
 
-        return $mail->send();
+        $mail->send();
     }
 }

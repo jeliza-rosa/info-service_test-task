@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Models;
+namespace App\Http\Controllers;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Feedback;
+use App\Models\FormRequest;
+use Illuminate\Http\Request;
 
-class FormRequest extends Model
+class FeedbackController extends Controller
 {
-    use HasFactory;
-
-    static public function validate()
+    public function send()
     {
         $attributes = request()->validate([
             'name' => 'required|min:2|max:30',
@@ -22,6 +21,7 @@ class FormRequest extends Model
 
         $attributes['owner_id'] = auth()->id();
 
-        return $attributes;
+        $application = Feedback::create($attributes);
+        return redirect('/');
     }
 }

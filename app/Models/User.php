@@ -44,6 +44,6 @@ class User extends Authenticatable
 
     public function applications()
     {
-        return $this->hasMany(Application::class, 'owner_id');
+        return $this->hasMany(Feedback::class, 'owner_id');
     }
 }
